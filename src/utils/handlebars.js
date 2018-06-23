@@ -22,11 +22,7 @@ hbs.registerHelper('for', function(from, to, incr, block) {
   return accum;
 });
 
-hbs.registerHelper('ifCond', function (v1, v2, v3, v4, operator) {
-    switch (operator) {
-        case '&&':
-            return (v1 && v2 && v3 && v4) ? options.fn(this) : options.inverse(this);
-        default:
-            return options.inverse(this);
-    }
+hbs.registerHelper('ifCond', function (...args) {
+    const options = args.pop()
+    return args.some(x => !x) ? options.fn(this): options.inverse(this);
 });
