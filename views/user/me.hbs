@@ -13,41 +13,41 @@
                     </div>
                 </div>
                 <div class="attributes">
-                    <div class="flex-row">
+                    <div id="profile-row-id" class="flex-row">
                         <div>UserID</div>
                         <div>
                             <span class="faded">{{user.id}}</span>
                         </div>
                     </div>
-                    <div class="flex-row">
+                    <div id="profile-row-username" class="flex-row">
                         <div>Username</div>
                         <div>
                             <span class="faded">{{user.username}}</span>
                         </div>
                     </div>
-                    <div class="flex-row">
+                    <div id="profile-row-firstname" class="flex-row">
                         <div>Firstname</div>
                         <div>
                             <span class="faded">{{user.firstname}}</span>
                         </div>
                     </div>
-                    <div class="flex-row">
+                    <div id="profile-row-lastname" class="flex-row">
                         <div>Lastname</div>
                         <div>
                             <span class="faded">{{user.lastname}}</span>
                         </div>
                     </div>
                     {{#unless user.verifiedemail}}
-                        <div class="flex-row">
+                        <div id="profile-row-email" class="flex-row">
                             <div>Email Address</div>
                             <div>
                                 <span class="faded">
-                                    <a href="mailto:{{user.email}}">{{user.email}}</a>
+                                    <a class="grey" href="mailto:{{user.email}}">{{user.email}}</a>
                                 </span>
                             </div>
                         </div>
                     {{/unless}}
-                    <div class="flex-row">
+                    <div id="profile-row-email" class="flex-row">
                         <div>Verified Email</div>
                         <div>
                             <span class="faded">
@@ -59,20 +59,20 @@
                             </span>
                         </div>
                     </div>
-                    <div class="flex-row">
+                    <div id="profile-row-collegename" class="flex-row">
                         <div>College</div>
                         <div>
                             <span class="faded">{{user.demographic.college.name}}</span>
                         </div>
                     </div>
-                    <div class="flex-row">
+                    <div id="profile-row-branchname" class="flex-row">
                         <div>Branch</div>
                         <div>
                             <span class="faded">{{user.demographic.branch.name}}</span>
                         </div>
                     </div>
                     {{#if user.role}}
-                        <div class="flex-row">
+                        <div id="profile-row-role" class="flex-row">
                             <div>Role@CB</div>
                             <div>
                                 <span class="faded">{{user.role}}</span>
@@ -80,14 +80,14 @@
                         </div>
                     {{/if}}
                     {{#if user.userfacebook}}
-                        <div class="flex-row">
+                        <div id="profile-row-fb" class="flex-row">
                             <div>Facebook Connected</div>
                             <div>
-                                <span class="faded">
-                                    <a target="_blank" href="http://facebook.com/{{user.userfacebook.id}}">
+                                <span class="grey">
+                                    <a class="grey" target="_blank" href="http://facebook.com/{{user.userfacebook.id}}">
                                         {{user.firstname}} {{user.lastname}}
                                     </a>
-                                    <a href="/disconnect/facebook" title="Disconnect Facebook">
+                                    <a class="grey" href="/disconnect/facebook" title="Disconnect Facebook">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </a>
                                 </span>
@@ -95,14 +95,14 @@
                         </div>
                     {{/if}}
                     {{#if user.usergoogle}}
-                        <div class="flex-row">
-                            <div>Github Connected</div>
+                        <div id="profile-row-google" class="flex-row">
+                            <div>Google Connected</div>
                             <div>
-                                <span class="faded">
-                                    <a target="_blank" href="http://facebook.com/{{user.userfacebook.id}}">
+                                <span class="grey">
+                                    <a class="grey" target="_blank" href="http://google.com/{{user.usergoogle.id}}">
                                         {{user.firstname}} {{user.lastname}}
                                     </a>
-                                    <a href="/disconnect/google" title="Disconnect Google">
+                                    <a class="grey" href="/disconnect/google" title="Disconnect Google">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </a>
                                 </span>
@@ -110,14 +110,14 @@
                         </div>
                     {{/if}}
                     {{#if user.usertwitter}}
-                        <div class="flex-row">
+                        <div id="profile-row-twitter" class="flex-row">
                             <div>Twitter Connected</div>
                             <div>
-                                <span class="faded">
-                                    <a target="_blank" href="http://twitter.com/{{user.usertwitter.username}}">
+                                <span class="grey">
+                                    <a class="grey" target="_blank" href="http://twitter.com/{{user.usertwitter.username}}">
                                         {{user.usertwitter.username}}
                                     </a>
-                                    <a href="/disconnect/twitter" title="Disconnect Twitter">
+                                    <a class="grey" href="/disconnect/twitter" title="Disconnect Twitter">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </a>
                                 </span>
@@ -125,23 +125,25 @@
                         </div>
                     {{/if}}
                     {{#if user.usergithub}}    
-                        <div class="flex-row">
+                        <div id="profile-row-github" class="flex-row">
                             <div>Github Connected</div>
                             <div>
-                                <span class="faded">
-                                    <a target="_blank" href="http://github.com/{{user.usergithub.username}}">
+                                <span class="grey">
+                                    <a class="grey" target="_blank" href="http://github.com/{{user.usergithub.username}}">
                                         {{user.usergithub.username}}
                                     </a>
-                                    <a href="/disconnect/github" title="Disconnect Github">
+                                    <a class="grey" href="/disconnect/github" title="Disconnect Github">
                                         <i class="fa fa-times" aria-hidden="true"></i>
                                     </a>
                                 </span>
                             </div>
                         </div>
                     {{/if}}
-                    <div class="flex-row">
-                        You may also connect to:
-                    </div>
+                    {{#ifCond user.userfacebook user.usergithub user.usergoogle user.usertwitter '&&'}}
+                        <div class="flex-row">
+                            You may also connect to:
+                        </div>
+                    {{/ifCond}}
                 </div>
                 <div>
                     <div class="links row">
