@@ -1,37 +1,34 @@
-<div class="row e-arrangement">
-    {{>side-nav}}
-    <div class="col-md-8 o-app-page">
-        <div class="card">
-            <div class="flex-row">
-                <div class="heading-u-red">My Apps</div>
-            </div>
-            <div class="attributes">
-                <div class="row justify-content-between">
-                    {{#each apps as |app|}}
-                        <div class="border-card">
-                            <div class="app-row heading">{{app.client.name}}</div>
-                            <div class="app-row">
-                                <span class="faded">Connected on {{formatDate app.createdAt}}</span>
-                            </div>
-                            <div class="row justify-content-between button-row">
-                                <a href="/apps/{{app.client.id}}/delete">
-                                    <div class="grey">
-                                        <button>Remove App</button>
-                                    </div>
-                                </a>
-                                <a href="{{app.client.defaultURL}}">
-                                    <div class="button-dashed">
-                                        <button>View App</button>
-                                    </div>
-                                </a>
-                            </div>
+<div class="col-md-8 o-app-page">
+    <div class="card">
+        <div class="flex-row">
+            <div class="heading-u-red">My Apps</div>
+        </div>
+        <div class="attributes">
+            <div class="row justify-content-between">
+                {{#each apps as |app|}}
+                    <div class="border-card">
+                        <div class="app-row heading">{{app.client.name}}</div>
+                        <div class="app-row">
+                            <span class="faded">Connected on {{formatDate app.createdAt}}</span>
                         </div>
-                    {{else}}
-                        <div class="border-card">
-                            <div class="app-row heading">You have no authorized apps yet.</div>
+                        <div class="row justify-content-between button-row">
+                            <a href="/apps/{{app.client.id}}/delete">
+                                <div class="grey">
+                                    <button>Remove App</button>
+                                </div>
+                            </a>
+                            <a href="{{app.client.defaultURL}}">
+                                <div class="button-dashed">
+                                    <button>View App</button>
+                                </div>
+                            </a>
                         </div>
-                    {{/each}}
-                </div>
+                    </div>
+                {{else}}
+                    <div class="border-card">
+                        <div class="app-row heading">You have no authorized apps yet.</div>
+                    </div>
+                {{/each}}
             </div>
         </div>
     </div>
