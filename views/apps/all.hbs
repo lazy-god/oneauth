@@ -1,11 +1,11 @@
-<div class="col-md-8 o-app-page">
+<div class="row e-arrangement">
+  {{>side-nav}}
+  <div class="col-md-8 o-app-page">
     <div class="card">
-        <div class="flex-row">
-            <div class="heading-u-red">My Apps</div>
-        </div>
+        <div class="heading-u-red">My Apps</div>
         <div class="attributes">
             <div class="row justify-content-between">
-                {{#each apps as |app|}}
+              {{#each apps as |app|}}
                     <div class="border-card">
                         <div class="app-row heading">{{app.client.name}}</div>
                         <div class="app-row">
@@ -32,4 +32,5 @@
             </div>
         </div>
     </div>
+  </div>
 </div>
