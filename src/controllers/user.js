@@ -8,6 +8,12 @@ function findUserById(id, includes) {
   });
 }
 
+function findAllUsersWithEmail(email) {
+  return User.findAll({
+    where: { email }
+  });
+}
+
 function findUserByParams(params) {
   return User.findOne({where: params})
 }
@@ -93,5 +99,6 @@ module.exports = {
   createUserLocal,
   updateUser,
   findUserForTrustedClient,
-  findAllUsersWithFilter
+  findAllUsersWithFilter,
+  findAllUsersWithEmail
 };
